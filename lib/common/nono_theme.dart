@@ -20,7 +20,7 @@ class NonoTheme {
   );
 
   static BoxShadow shadow = BoxShadow(
-    color: Colors.brown.withOpacity(.12),
+    color: Colors.brown.withValues(alpha: .12),
     blurRadius: 26,
     offset: const Offset(0, 12),
   );

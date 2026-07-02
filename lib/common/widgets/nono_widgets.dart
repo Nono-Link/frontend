@@ -132,7 +132,7 @@ class NonoInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
     padding: const EdgeInsets.all(15),
-    decoration: BoxDecoration(color: color.withOpacity(.07), borderRadius: BorderRadius.circular(16), border: Border.all(color: color.withOpacity(.25), width: 1.4)),
+    decoration: BoxDecoration(color: color.withValues(alpha: .07), borderRadius: BorderRadius.circular(16), border: Border.all(color: color.withValues(alpha: .25), width: 1.4)),
     child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Text(icon, style: const TextStyle(fontSize: 22)),
       const SizedBox(width: 10),
@@ -152,7 +152,7 @@ class NonoChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
     padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 7),
-    decoration: BoxDecoration(color: color.withOpacity(.10), borderRadius: BorderRadius.circular(99), border: Border.all(color: color.withOpacity(.22))),
+    decoration: BoxDecoration(color: color.withValues(alpha: .10), borderRadius: BorderRadius.circular(99), border: Border.all(color: color.withValues(alpha: .22))),
     child: Text(text, style: TextStyle(color: color, fontWeight: FontWeight.w900, fontSize: 12)),
   );
 }
