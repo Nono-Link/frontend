@@ -17,13 +17,13 @@ class _ScannerLoginPageState extends State<ScannerLoginPage> {
   @override
   Widget build(BuildContext context) => NonoPage(
     children: [
-      const NonoTop(title: '재능 이용자 로그인', subtitle: 'QR 스캔 전 본인 확인을 진행합니다'),
+      const NonoTop(title: '재능 배움이 로그인', subtitle: 'QR 스캔 전 본인 확인을 진행합니다'),
       const SizedBox(height: 18),
       NonoCard(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('재능 이용자 인증', style: NonoTheme.h2),
+            Text('재능 배움이 인증', style: NonoTheme.h2),
             const SizedBox(height: 7),
             Text(
               '안전한 매칭을 위해 본인 확인이 완료된 사용자만 QR 명함을 확인할 수 있습니다.',

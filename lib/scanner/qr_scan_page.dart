@@ -5,7 +5,7 @@ import 'scanner_match_page.dart';
 
 class QrScanPage extends StatelessWidget { const QrScanPage({super.key});
   @override Widget build(BuildContext context)=>NonoPage(children:[
-    const NonoTop(title:'보안 QR 스캔', subtitle:'재능 나눔자 명함을 앱에서 안전하게 확인합니다'), const SizedBox(height:18),
+    const NonoTop(title:'보안 QR 스캔', subtitle:'재능 나눔이 명함을 앱에서 안전하게 확인합니다'), const SizedBox(height:18),
     NonoCard(child: Column(children:[
       Container(height:310, width:double.infinity, decoration:BoxDecoration(color:NonoTheme.charcoal, borderRadius:BorderRadius.circular(22)), child:Stack(alignment:Alignment.center, children:[const Icon(Icons.qr_code_scanner, color:Colors.white70, size:120), Positioned(top:30, left:30, right:30, child:Container(height:3, color:NonoTheme.coral)), const Positioned(bottom:28, child:Text('명함 QR을 화면 안에 맞춰주세요', style:TextStyle(color:Colors.white, fontWeight:FontWeight.w900, fontSize:17)))])),
       const SizedBox(height:18), NonoButton(text:'명함 확인하기', icon:Icons.check_circle, onTap:()=>Navigator.push(context, MaterialPageRoute(builder: (_)=>const ScannerMatchPage()))),

@@ -18,7 +18,7 @@ class _SeniorLoginPageState extends State<SeniorLoginPage> {
   @override
   Widget build(BuildContext context) => NonoPage(
     children: [
-      const NonoTop(title: '재능 나눔자 간단 인증', subtitle: '등록된 전화번호로 내 명함을 확인합니다'),
+      const NonoTop(title: '재능 나눔이 간단 인증', subtitle: '등록된 전화번호로 내 명함을 확인합니다'),
       const SizedBox(height: 20),
       NonoCard(
         child: Column(
