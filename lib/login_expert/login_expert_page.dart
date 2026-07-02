@@ -10,7 +10,7 @@ class _LoginExpertPageState extends State<LoginExpertPage> {
   final id = TextEditingController(); final pw = TextEditingController(); final name = TextEditingController(); final phone = TextEditingController();
   @override
   Widget build(BuildContext context) => NonoPage(children: [
-    const NonoTop(title: '담당자 로그인', subtitle: '어르신 등록과 명함 발급을 진행합니다'),
+    const NonoTop(title: '담당자 로그인', subtitle: '재능 나눔자 등록과 명함 발급을 진행합니다'),
     const SizedBox(height: 20),
     Container(padding: const EdgeInsets.all(6), decoration: BoxDecoration(color: NonoTheme.lineSoft, borderRadius: BorderRadius.circular(16)), child: Row(children: [
       _tab('로그인', loginMode, () => setState(() => loginMode = true)),
@@ -41,7 +41,7 @@ class _LoginExpertPageState extends State<LoginExpertPage> {
       NonoInput(label: '전화번호', controller: phone, hint: '010-1234-5678'),
       NonoButton(text: '회원가입 완료', icon: Icons.check, onTap: () => setState(() => done = true)),
       const SizedBox(height: 14),
-      const NonoInfo(icon: '👵', title: '어르신 계정은 담당자가 등록합니다', body: '신청서 확인 후 어르신용 간단 인증 계정이 생성됩니다.'),
+      const NonoInfo(icon: '👵', title: '재능 나눔자 계정은 담당자가 등록합니다', body: '신청서 확인 후 재능 나눔자용 간단 인증 계정이 생성됩니다.'),
     ]);
   }
   Widget _role(String e, String title, String value) => GestureDetector(onTap: () => setState(() => role = value), child: Container(margin: const EdgeInsets.only(bottom: 15), padding: const EdgeInsets.all(13), decoration: BoxDecoration(color: role == value ? NonoTheme.coral.withValues(alpha: .08) : NonoTheme.cream, borderRadius: BorderRadius.circular(15), border: Border.all(color: role == value ? NonoTheme.coral : NonoTheme.line, width: 2)), child: Column(children: [Text(e, style: const TextStyle(fontSize: 26)), const SizedBox(height: 6), Text(title, textAlign: TextAlign.center, style: const TextStyle(fontWeight: FontWeight.w900))])));

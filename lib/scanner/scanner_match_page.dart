@@ -12,7 +12,7 @@ class _ScannerMatchPageState extends State<ScannerMatchPage> { bool requested=fa
       const Text('화분 가꾸기 · 경력 20년', style:TextStyle(color:NonoTheme.coral, fontSize:18, fontWeight:FontWeight.w900)), const SizedBox(height:16),
       const Text('작은 화분을 오래 건강하게 키우는 법을 알려드려요.', textAlign:TextAlign.center, style:TextStyle(fontSize:18, height:1.45, fontWeight:FontWeight.w800)), const SizedBox(height:18),
       const Wrap(spacing:8, runSpacing:8, alignment:WrapAlignment.center, children:[NonoChip(text:'평일 오후'), NonoChip(text:'주민센터'), NonoChip(text:'1:1')]), const SizedBox(height:18),
-      NonoButton(text:requested?'요청 완료 · 후기 작성하기':'매칭 신청하기', icon:requested?Icons.rate_review:Icons.favorite, green:requested, onTap:(){ if(!requested){ setState(()=>requested=true); nonoToast(context, '어르신에게 매칭 요청을 보냈습니다.'); } else { Navigator.push(context, MaterialPageRoute(builder: (_)=>const ReviewPage())); }}),
+      NonoButton(text:requested?'요청 완료 · 후기 작성하기':'매칭 신청하기', icon:requested?Icons.rate_review:Icons.favorite, green:requested, onTap:(){ if(!requested){ setState(()=>requested=true); nonoToast(context, '재능 나눔자에게 매칭 요청을 보냈습니다.'); } else { Navigator.push(context, MaterialPageRoute(builder: (_)=>const ReviewPage())); }}),
     ])),
     const SizedBox(height:16), const NonoInfo(icon:'🌡️', title:'평판 시스템', body:'만남 후 후기와 온도가 반영됩니다. 불참이나 신고가 누적되면 매칭 신청이 제한됩니다.', color:NonoTheme.green),
   ]);

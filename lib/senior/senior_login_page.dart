@@ -6,7 +6,7 @@ import 'senior_home_page.dart';
 class SeniorLoginPage extends StatefulWidget { const SeniorLoginPage({super.key}); @override State<SeniorLoginPage> createState()=>_SeniorLoginPageState(); }
 class _SeniorLoginPageState extends State<SeniorLoginPage> { final phone=TextEditingController(), code=TextEditingController(); bool sent=false;
   @override Widget build(BuildContext context)=>NonoPage(children:[
-    const NonoTop(title:'어르신 간단 인증', subtitle:'등록된 전화번호로 내 명함을 확인합니다'), const SizedBox(height:20),
+    const NonoTop(title:'재능 나눔자 간단 인증', subtitle:'등록된 전화번호로 내 명함을 확인합니다'), const SizedBox(height:20),
     NonoCard(child: Column(crossAxisAlignment:CrossAxisAlignment.stretch, children:[
       const Text('👵', textAlign:TextAlign.center, style:TextStyle(fontSize:58)), const SizedBox(height:8),
       const Text('내 재능 명함 확인', textAlign:TextAlign.center, style:TextStyle(fontSize:27, fontWeight:FontWeight.w900, color:NonoTheme.charcoal)), const SizedBox(height:10),
