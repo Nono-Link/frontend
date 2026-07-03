@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../common/nono_theme.dart';
 import '../common/widgets/nono_widgets.dart';
-import 'senior_home_page.dart';
+import 'my_talent_card_page.dart';
 
 class SeniorLoginPage extends StatefulWidget {
   const SeniorLoginPage({super.key});
@@ -84,7 +84,7 @@ class _SeniorLoginPageState extends State<SeniorLoginPage> {
                 } else {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (_) => const SeniorHomePage()),
+                    MaterialPageRoute(builder: (_) => const MyTalentCardScreen(code: '483920')),
                   );
                 }
               },
