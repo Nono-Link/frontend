@@ -13,7 +13,7 @@ class ScannerLoginPage extends StatefulWidget {
 class _ScannerLoginPageState extends State<ScannerLoginPage> {
   final name = TextEditingController(text: 'scanner_login_name_hint'.tr()),
       nickname = TextEditingController(),
-      phone = TextEditingController(text: '010-9999-0000');
+      phone = TextEditingController(text: 'scanner_login_phone_hint'.tr());
   bool verified = false;
   @override
   Widget build(BuildContext context) => NonoPage(
@@ -49,7 +49,7 @@ class _ScannerLoginPageState extends State<ScannerLoginPage> {
             NonoInput(
               label: 'scanner_login_phone_label'.tr(),
               controller: phone,
-              hint: '010-9999-0000',
+              hint: 'scanner_login_phone_hint'.tr(),
               keyboardType: TextInputType.phone,
             ),
             CheckboxListTile(

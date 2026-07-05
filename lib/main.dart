@@ -20,6 +20,7 @@ class NonoLinkApp extends StatelessWidget {
   const NonoLinkApp({super.key});
   @override
   Widget build(BuildContext context) => MaterialApp(
+    key: ValueKey(context.locale),
     title: '노노링크',
     debugShowCheckedModeBanner: false,
     theme: NonoTheme.data(),

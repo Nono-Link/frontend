@@ -39,7 +39,7 @@ class _LoginExpertPageState extends State<LoginExpertPage> {
       NonoInput(label: 'login_expert_id_label'.tr(), controller: id, hint: 'login_expert_signup_id_hint'.tr()),
       NonoInput(label: 'login_expert_password_label'.tr(), controller: pw, hint: 'login_expert_signup_password_hint'.tr(), obscure: true),
       NonoInput(label: 'login_expert_name_label'.tr(), controller: name, hint: 'login_expert_name_hint'.tr()),
-      NonoInput(label: 'login_expert_phone_label'.tr(), controller: phone, hint: '010-1234-5678'),
+      NonoInput(label: 'login_expert_phone_label'.tr(), controller: phone, hint: 'login_expert_phone_hint'.tr()),
       NonoButton(text: 'login_expert_signup_submit_button'.tr(), icon: Icons.check, onTap: () => setState(() => done = true)),
       const SizedBox(height: 14),
       NonoInfo(icon: '👵', title: 'login_expert_info_title'.tr(), body: 'login_expert_info_body'.tr()),

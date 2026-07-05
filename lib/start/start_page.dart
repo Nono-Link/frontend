@@ -12,6 +12,8 @@ class StartPage extends StatelessWidget {
   Widget build(BuildContext context) => NonoPage(
     maxWidth: 640,
     children: [
+      const Align(alignment: Alignment.centerRight, child: _LanguageDropdown()),
+      const SizedBox(height: 8),
       NonoHeader(
         title: 'start_app_title'.tr(),
         subtitle: 'start_app_subtitle'.tr(),
@@ -92,6 +94,34 @@ class _RoleCard extends StatelessWidget {
               Navigator.push(context, MaterialPageRoute(builder: (_) => page)),
         ),
       ],
+    ),
+  );
+}
+
+class _LanguageDropdown extends StatelessWidget {
+  const _LanguageDropdown();
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.symmetric(horizontal: 12),
+    decoration: BoxDecoration(
+      color: NonoTheme.paper,
+      borderRadius: BorderRadius.circular(12),
+      border: Border.all(color: NonoTheme.line, width: 1.5),
+    ),
+    child: DropdownButtonHideUnderline(
+      child: DropdownButton<Locale>(
+        value: context.locale,
+        icon: const Padding(padding: EdgeInsets.only(left: 6), child: Icon(Icons.language, color: NonoTheme.charcoalSoft, size: 20)),
+        borderRadius: BorderRadius.circular(12),
+        style: const TextStyle(color: NonoTheme.charcoal, fontWeight: FontWeight.w800, fontSize: 14),
+        items: const [
+          DropdownMenuItem(value: Locale('ko'), child: Text('한국어')),
+          DropdownMenuItem(value: Locale('ja'), child: Text('日本語')),
+        ],
+        onChanged: (locale) {
+          if (locale != null) context.setLocale(locale);
+        },
+      ),
     ),
   );
 }

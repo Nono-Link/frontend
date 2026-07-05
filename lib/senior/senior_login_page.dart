@@ -65,7 +65,7 @@ class _SeniorLoginPageState extends State<SeniorLoginPage> {
             NonoInput(
               label: 'senior_login_phone_label'.tr(),
               controller: phone,
-              hint: '010-1234-5678',
+              hint: 'senior_login_phone_hint'.tr(),
               keyboardType: TextInputType.phone,
             ),
             if (sent)

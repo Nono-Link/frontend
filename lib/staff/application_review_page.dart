@@ -16,7 +16,7 @@ class _ApplicationReviewPageState extends State<ApplicationReviewPage> {
       nickname = TextEditingController(text: 'staff_review_demo_nickname'.tr()),
       age = TextEditingController(text: 'staff_review_demo_age'.tr()),
       town = TextEditingController(text: 'staff_review_demo_town'.tr()),
-      phone = TextEditingController(text: '010-1234-5678'),
+      phone = TextEditingController(text: 'staff_review_phone_hint'.tr()),
       talent = TextEditingController(text: 'staff_review_demo_talent'.tr()),
       career = TextEditingController(text: 'staff_review_demo_career'.tr()),
       intro = TextEditingController(text: 'staff_review_demo_intro'.tr()),
@@ -50,7 +50,7 @@ class _ApplicationReviewPageState extends State<ApplicationReviewPage> {
             ),
             NonoInput(label: 'staff_review_age_label'.tr(), controller: age, hint: 'staff_review_demo_age'.tr()),
             NonoInput(label: 'staff_review_town_label'.tr(), controller: town, hint: 'staff_review_demo_town'.tr()),
-            NonoInput(label: 'staff_review_phone_label'.tr(), controller: phone, hint: '010-1234-5678'),
+            NonoInput(label: 'staff_review_phone_label'.tr(), controller: phone, hint: 'staff_review_phone_hint'.tr()),
             NonoInput(label: 'staff_review_talent_label'.tr(), controller: talent, hint: 'staff_talent_hobby_label'.tr()),
             NonoInput(label: 'staff_review_career_label'.tr(), controller: career, hint: 'staff_review_demo_career'.tr()),
             NonoInput(
