@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../common/nono_theme.dart';
 import '../common/widgets/nono_widgets.dart';
@@ -18,7 +19,7 @@ class _SeniorLoginPageState extends State<SeniorLoginPage> {
   @override
   Widget build(BuildContext context) => NonoPage(
     children: [
-      const NonoTop(title: '재능 나눔이 간단 인증', subtitle: '등록된 전화번호로 내 명함을 확인합니다'),
+      NonoTop(title: 'senior_login_title'.tr(), subtitle: 'senior_login_subtitle'.tr()),
       const SizedBox(height: 20),
       NonoCard(
         child: Column(
@@ -30,10 +31,10 @@ class _SeniorLoginPageState extends State<SeniorLoginPage> {
               style: TextStyle(fontSize: 58),
             ),
             const SizedBox(height: 8),
-            const Text(
-              '내 재능 명함 확인',
+            Text(
+              'senior_login_heading'.tr(),
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 27,
                 fontWeight: FontWeight.w900,
                 color: NonoTheme.charcoal,
@@ -41,7 +42,7 @@ class _SeniorLoginPageState extends State<SeniorLoginPage> {
             ),
             const SizedBox(height: 10),
             Text(
-              '담당자가 등록한 재능 명함을\n전화번호로 안전하게 확인합니다.',
+              'senior_login_description'.tr(),
               textAlign: TextAlign.center,
               style: NonoTheme.body.copyWith(fontSize: 18),
             ),
@@ -49,38 +50,38 @@ class _SeniorLoginPageState extends State<SeniorLoginPage> {
             Row(
               children: [
                 Expanded(
-                  child: NonoInput(label: '이름', controller: name, hint: '홍길동'),
+                  child: NonoInput(label: 'senior_login_name_label'.tr(), controller: name, hint: 'senior_login_name_hint'.tr()),
                 ),
                 const SizedBox(width: 12),
                 Expanded(
                   child: NonoInput(
-                    label: '별명',
+                    label: 'senior_login_nickname_label'.tr(),
                     controller: nickname,
-                    hint: '나눔이',
+                    hint: 'senior_login_nickname_hint'.tr(),
                   ),
                 ),
               ],
             ),
             NonoInput(
-              label: '전화번호',
+              label: 'senior_login_phone_label'.tr(),
               controller: phone,
               hint: '010-1234-5678',
               keyboardType: TextInputType.phone,
             ),
             if (sent)
               NonoInput(
-                label: '인증번호',
+                label: 'senior_login_code_label'.tr(),
                 controller: code,
                 hint: '123456',
                 keyboardType: TextInputType.number,
               ),
             NonoButton(
-              text: sent ? '내 명함 보러 가기' : '인증번호 받기',
+              text: sent ? 'senior_view_card_button'.tr() : 'senior_login_request_code_button'.tr(),
               icon: sent ? Icons.badge : Icons.sms,
               onTap: () {
                 if (!sent) {
                   setState(() => sent = true);
-                  nonoToast(context, '인증번호를 보냈습니다.');
+                  nonoToast(context, 'senior_login_toast_code_sent'.tr());
                 } else {
                   Navigator.pushReplacement(
                     context,
@@ -90,10 +91,10 @@ class _SeniorLoginPageState extends State<SeniorLoginPage> {
               },
             ),
             const SizedBox(height: 16),
-            const NonoInfo(
+            NonoInfo(
               icon: '✍️',
-              title: '입력은 최소화했습니다',
-              body: '재능·경력·활동 선호는 이미 등록되어 있어, 앱에서는 확인과 수락만 진행합니다.',
+              title: 'senior_login_info_title'.tr(),
+              body: 'senior_login_info_body'.tr(),
               color: NonoTheme.coral,
             ),
           ],

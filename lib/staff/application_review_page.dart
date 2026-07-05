@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../common/nono_theme.dart';
 import '../common/widgets/nono_widgets.dart';
@@ -11,26 +12,26 @@ class ApplicationReviewPage extends StatefulWidget {
 }
 
 class _ApplicationReviewPageState extends State<ApplicationReviewPage> {
-  final name = TextEditingController(text: '김영자'),
-      nickname = TextEditingController(text: '나눔이'),
-      age = TextEditingController(text: '70대'),
-      town = TextEditingController(text: '성북동'),
+  final name = TextEditingController(text: 'staff_review_demo_name'.tr()),
+      nickname = TextEditingController(text: 'staff_review_demo_nickname'.tr()),
+      age = TextEditingController(text: 'staff_review_demo_age'.tr()),
+      town = TextEditingController(text: 'staff_review_demo_town'.tr()),
       phone = TextEditingController(text: '010-1234-5678'),
-      talent = TextEditingController(text: '원예, 화분 가꾸기'),
-      career = TextEditingController(text: '20년'),
-      intro = TextEditingController(text: '작은 화분을 오래 건강하게 키우는 법을 알려드립니다.'),
-      pref = TextEditingController(text: '평일 오후 · 주민센터 · 1:1'),
-      mood = TextEditingController(text: '따뜻한'),
+      talent = TextEditingController(text: 'staff_review_demo_talent'.tr()),
+      career = TextEditingController(text: 'staff_review_demo_career'.tr()),
+      intro = TextEditingController(text: 'staff_review_demo_intro'.tr()),
+      pref = TextEditingController(text: 'staff_review_demo_pref'.tr()),
+      mood = TextEditingController(text: 'staff_review_demo_mood'.tr()),
       identCode = TextEditingController(text: '483920');
   @override
   Widget build(BuildContext context) => NonoPage(
     children: [
-      const NonoTop(title: '신청서 내용 확인', subtitle: '명함에 반영될 정보와 안전 동의를 확인합니다'),
+      NonoTop(title: 'staff_step_review_title'.tr(), subtitle: 'staff_review_subtitle'.tr()),
       const SizedBox(height: 16),
-      const NonoInfo(
+      NonoInfo(
         icon: '🔎',
-        title: '확인 필요',
-        body: '명함 발급 전 담당자가 신청서 내용과 동의 항목을 최종 확인합니다.',
+        title: 'staff_review_info_title'.tr(),
+        body: 'staff_review_info_body'.tr(),
         color: NonoTheme.coral,
       ),
       const SizedBox(height: 16),
@@ -38,33 +39,33 @@ class _ApplicationReviewPageState extends State<ApplicationReviewPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('기본·재능 정보', style: NonoTheme.h2),
+            Text('staff_review_basic_section_title'.tr(), style: NonoTheme.h2),
             const SizedBox(height: 14),
             Row(
               children: [
-                Expanded(child: NonoInput(label: '성함', controller: name, hint: '성함')),
+                Expanded(child: NonoInput(label: 'staff_review_name_field_label'.tr(), controller: name, hint: 'staff_review_name_field_label'.tr())),
                 const SizedBox(width: 12),
-                Expanded(child: NonoInput(label: '별명', controller: nickname, hint: '나눔이')),
+                Expanded(child: NonoInput(label: 'staff_review_nickname_label'.tr(), controller: nickname, hint: 'staff_review_demo_nickname'.tr())),
               ],
             ),
-            NonoInput(label: '연령대', controller: age, hint: '70대'),
-            NonoInput(label: '동네', controller: town, hint: '성북동'),
-            NonoInput(label: '연락처', controller: phone, hint: '010-1234-5678'),
-            NonoInput(label: '재능', controller: talent, hint: '원예'),
-            NonoInput(label: '경력', controller: career, hint: '20년'),
+            NonoInput(label: 'staff_review_age_label'.tr(), controller: age, hint: 'staff_review_demo_age'.tr()),
+            NonoInput(label: 'staff_review_town_label'.tr(), controller: town, hint: 'staff_review_demo_town'.tr()),
+            NonoInput(label: 'staff_review_phone_label'.tr(), controller: phone, hint: '010-1234-5678'),
+            NonoInput(label: 'staff_review_talent_label'.tr(), controller: talent, hint: 'staff_talent_hobby_label'.tr()),
+            NonoInput(label: 'staff_review_career_label'.tr(), controller: career, hint: 'staff_review_demo_career'.tr()),
             NonoInput(
-              label: '한 줄 소개',
+              label: 'staff_review_intro_label'.tr(),
               controller: intro,
-              hint: '저는 ... 를 잘합니다.',
+              hint: 'staff_review_intro_hint'.tr(),
               maxLines: 3,
             ),
             NonoInput(
-              label: '활동 선호',
+              label: 'staff_review_pref_label'.tr(),
               controller: pref,
-              hint: '평일 오후 · 주민센터',
+              hint: 'staff_review_pref_hint'.tr(),
               maxLines: 2,
             ),
-            NonoInput(label: '명함 분위기', controller: mood, hint: '따뜻한'),
+            NonoInput(label: 'staff_review_mood_label'.tr(), controller: mood, hint: 'staff_review_demo_mood'.tr()),
           ],
         ),
       ),
@@ -73,19 +74,19 @@ class _ApplicationReviewPageState extends State<ApplicationReviewPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('식별코드 확인', style: NonoTheme.h2),
+            Text('staff_review_code_section_title'.tr(), style: NonoTheme.h2),
             const SizedBox(height: 4),
-            const Text('어르신 앱 화면에 표시된 6자리 코드를 입력해 대조합니다.', style: NonoTheme.muted),
+            Text('staff_review_code_section_desc'.tr(), style: NonoTheme.muted),
             const SizedBox(height: 14),
-            NonoInput(label: '식별코드', controller: identCode, hint: '483920', keyboardType: TextInputType.number),
+            NonoInput(label: 'staff_review_code_label'.tr(), controller: identCode, hint: '483920', keyboardType: TextInputType.number),
             const SizedBox(height: 8),
             NonoButton(
-              text: '확인 완료하고 명함 발급',
+              text: 'staff_review_submit_button'.tr(),
               icon: Icons.badge,
               onTap: () {
                 final code = identCode.text.trim();
                 if (!MockBackendStore.instance.matchesPending(code)) {
-                  nonoToast(context, '식별코드가 일치하지 않습니다. 다시 확인해 주세요.');
+                  nonoToast(context, 'staff_review_toast_code_mismatch'.tr());
                   return;
                 }
                 MockBackendStore.instance.issue(code, TalentCardData(

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../common/nono_theme.dart';
 import '../common/widgets/nono_widgets.dart';
@@ -10,43 +11,43 @@ class ScannerLoginPage extends StatefulWidget {
 }
 
 class _ScannerLoginPageState extends State<ScannerLoginPage> {
-  final name = TextEditingController(text: '박민수'),
+  final name = TextEditingController(text: 'scanner_login_name_hint'.tr()),
       nickname = TextEditingController(),
       phone = TextEditingController(text: '010-9999-0000');
   bool verified = false;
   @override
   Widget build(BuildContext context) => NonoPage(
     children: [
-      const NonoTop(title: '재능 배움이 로그인', subtitle: 'QR 스캔 전 본인 확인을 진행합니다'),
+      NonoTop(title: 'scanner_login_title'.tr(), subtitle: 'scanner_login_subtitle'.tr()),
       const SizedBox(height: 18),
       NonoCard(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('재능 배움이 인증', style: NonoTheme.h2),
+            Text('scanner_login_heading'.tr(), style: NonoTheme.h2),
             const SizedBox(height: 7),
             Text(
-              '안전한 매칭을 위해 본인 확인이 완료된 사용자만 QR 명함을 확인할 수 있습니다.',
+              'scanner_login_description'.tr(),
               style: NonoTheme.muted,
             ),
             const SizedBox(height: 20),
             Row(
               children: [
                 Expanded(
-                  child: NonoInput(label: '이름', controller: name, hint: '박민수'),
+                  child: NonoInput(label: 'scanner_login_name_label'.tr(), controller: name, hint: 'scanner_login_name_hint'.tr()),
                 ),
                 const SizedBox(width: 12),
                 Expanded(
                   child: NonoInput(
-                    label: '별명',
+                    label: 'scanner_login_nickname_label'.tr(),
                     controller: nickname,
-                    hint: '이용이',
+                    hint: 'scanner_login_nickname_hint'.tr(),
                   ),
                 ),
               ],
             ),
             NonoInput(
-              label: '전화번호',
+              label: 'scanner_login_phone_label'.tr(),
               controller: phone,
               hint: '010-9999-0000',
               keyboardType: TextInputType.phone,
@@ -57,9 +58,9 @@ class _ScannerLoginPageState extends State<ScannerLoginPage> {
               activeColor: NonoTheme.coral,
               controlAffinity: ListTileControlAffinity.leading,
               contentPadding: EdgeInsets.zero,
-              title: const Text(
-                '휴대폰 본인 확인 완료',
-                style: TextStyle(
+              title: Text(
+                'scanner_login_checkbox_label'.tr(),
+                style: const TextStyle(
                   fontWeight: FontWeight.w900,
                   color: NonoTheme.charcoal,
                 ),
@@ -67,11 +68,11 @@ class _ScannerLoginPageState extends State<ScannerLoginPage> {
             ),
             const SizedBox(height: 12),
             NonoButton(
-              text: '인증 후 QR 스캔하기',
+              text: 'scanner_login_submit_button'.tr(),
               icon: Icons.qr_code_scanner,
               onTap: () {
                 if (!verified) {
-                  nonoToast(context, '본인확인 체크 후 진행해 주세요.');
+                  nonoToast(context, 'scanner_login_toast_need_verify'.tr());
                   return;
                 }
                 Navigator.pushReplacement(

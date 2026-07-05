@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../nono_theme.dart';
 import '../matching_store.dart';
@@ -29,7 +30,7 @@ class _QuickReplyChatViewState extends State<QuickReplyChatView> {
 
   void _speak() {
     // TODO: 실제 STT(음성 인식) 연동. 지금은 버튼 자리와 훅만 마련해둔다.
-    nonoToast(context, '음성 입력을 시작합니다.');
+    nonoToast(context, 'common_chat_voice_toast'.tr());
   }
 
   @override
@@ -63,7 +64,7 @@ class _QuickReplyChatViewState extends State<QuickReplyChatView> {
           ),
       ])),
       const SizedBox(height: 16),
-      Text('빠른 답장', style: NonoTheme.h2),
+      Text('common_chat_quick_reply_label'.tr(), style: NonoTheme.h2),
       const SizedBox(height: 10),
       Wrap(
         spacing: 9,
@@ -83,7 +84,7 @@ class _QuickReplyChatViewState extends State<QuickReplyChatView> {
             .toList(),
       ),
       const SizedBox(height: 14),
-      NonoButton(text: '음성으로 말하기', icon: Icons.mic, secondary: true, onTap: _speak),
+      NonoButton(text: 'common_chat_voice_button'.tr(), icon: Icons.mic, secondary: true, onTap: _speak),
     ]);
   }
 }

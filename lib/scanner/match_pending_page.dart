@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../common/nono_theme.dart';
 import '../common/widgets/nono_widgets.dart';
@@ -52,37 +53,37 @@ class _MatchPendingPageState extends State<MatchPendingPage> {
     final accepted = req?.status == MatchStatus.accepted;
 
     return NonoPage(children: [
-      const NonoTop(title: '신청 완료', subtitle: '나눔이의 수락을 기다리고 있어요'),
+      NonoTop(title: 'scanner_match_pending_title'.tr(), subtitle: 'scanner_match_pending_subtitle'.tr()),
       const SizedBox(height: 18),
       NonoCard(child: Row(children: [
         Text(g.avatar, style: const TextStyle(fontSize: 44)),
         const SizedBox(width: 14),
         Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text('${g.name} 님', style: NonoTheme.h2),
+          Text('scanner_giver_name_label'.tr(namedArgs: {'name': g.name}), style: NonoTheme.h2),
           const SizedBox(height: 4),
-          Text('${g.talentTag} · 별명 ${g.nickname}', style: NonoTheme.muted),
+          Text('scanner_giver_tag_line'.tr(namedArgs: {'tag': g.talentTag, 'nickname': g.nickname}), style: NonoTheme.muted),
         ])),
       ])),
       const SizedBox(height: 16),
       NonoCard(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text('신청한 시간', style: NonoTheme.h2),
+        Text('scanner_match_pending_section_title'.tr(), style: NonoTheme.h2),
         const SizedBox(height: 12),
-        _SummaryRow(icon: Icons.place, label: '장소', value: req?.place ?? '-'),
+        _SummaryRow(icon: Icons.place, label: 'scanner_match_pending_label_place'.tr(), value: req?.place ?? '-'),
         const SizedBox(height: 8),
-        _SummaryRow(icon: Icons.event, label: '요일', value: req?.day ?? '-'),
+        _SummaryRow(icon: Icons.event, label: 'scanner_match_pending_label_day'.tr(), value: req?.day ?? '-'),
         const SizedBox(height: 8),
-        _SummaryRow(icon: Icons.schedule, label: '시간', value: req?.timeSlot ?? '-'),
+        _SummaryRow(icon: Icons.schedule, label: 'scanner_match_pending_label_time'.tr(), value: req?.timeSlot ?? '-'),
       ])),
       const SizedBox(height: 16),
       NonoInfo(
         icon: accepted ? '🎉' : '⏳',
-        title: accepted ? '나눔이가 수락했어요!' : '나눔이가 수락하면 채팅으로 연결됩니다',
-        body: accepted ? '채팅함에서 만남을 준비해 보세요.' : '조금만 기다려 주세요. 나눔이가 확인 중이에요.',
+        title: accepted ? 'scanner_match_pending_accepted_title'.tr() : 'scanner_match_pending_waiting_title'.tr(),
+        body: accepted ? 'scanner_match_pending_accepted_body'.tr() : 'scanner_match_pending_waiting_body'.tr(),
         color: accepted ? NonoTheme.green : NonoTheme.navy,
       ),
       const SizedBox(height: 18),
       NonoButton(
-        text: '채팅함 열기',
+        text: 'scanner_match_pending_chat_button'.tr(),
         icon: Icons.chat_bubble,
         green: accepted,
         onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ScannerChatPage())),
@@ -90,7 +91,7 @@ class _MatchPendingPageState extends State<MatchPendingPage> {
       if (accepted) ...[
         const SizedBox(height: 10),
         NonoButton(
-          text: '만남 후 후기 작성하기',
+          text: 'scanner_match_pending_review_button'.tr(),
           icon: Icons.rate_review,
           secondary: true,
           onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ReviewPage())),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../common/nono_theme.dart';
 import '../common/widgets/nono_widgets.dart';
@@ -62,15 +63,15 @@ class _MatchRequestPageState extends State<MatchRequestPage> {
     final rejected = widget.isResubmit ? _store.currentRequest : null;
 
     return NonoPage(children: [
-      NonoTop(title: widget.isResubmit ? '다른 시간 다시 선택' : '매칭 신청', subtitle: '나눔이가 등록한 시간 중에서만 고를 수 있어요'),
+      NonoTop(title: widget.isResubmit ? 'scanner_match_request_title_resubmit'.tr() : 'scanner_match_request_title_new'.tr(), subtitle: 'scanner_match_request_subtitle'.tr()),
       const SizedBox(height: 18),
       NonoCard(child: Row(children: [
         Text(g.avatar, style: const TextStyle(fontSize: 44)),
         const SizedBox(width: 14),
         Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text('${g.name} 님', style: NonoTheme.h2),
+          Text('scanner_giver_name_label'.tr(namedArgs: {'name': g.name}), style: NonoTheme.h2),
           const SizedBox(height: 4),
-          Text('${g.talentTag} · 별명 ${g.nickname}', style: NonoTheme.muted),
+          Text('scanner_giver_tag_line'.tr(namedArgs: {'tag': g.talentTag, 'nickname': g.nickname}), style: NonoTheme.muted),
         ])),
       ])),
       const SizedBox(height: 16),
@@ -79,30 +80,30 @@ class _MatchRequestPageState extends State<MatchRequestPage> {
           padding: const EdgeInsets.only(bottom: 16),
           child: NonoInfo(
             icon: '😥',
-            title: '${g.name} 님이 이 시간은 어렵다고 하셨어요',
-            body: '거절된 시간: ${rejected.day} ${rejected.timeSlot} · ${rejected.place}\n아래에서 다른 시간을 다시 골라주세요.',
+            title: 'scanner_match_request_rejected_info_title'.tr(namedArgs: {'name': g.name}),
+            body: 'scanner_match_request_rejected_info_body'.tr(namedArgs: {'day': rejected.day, 'timeSlot': rejected.timeSlot, 'place': rejected.place}),
             color: NonoTheme.red,
           ),
         ),
       if (exhausted)
-        const NonoInfo(icon: '🙏', title: '가능한 시간이 더 없어요', body: '나눔이가 등록한 시간을 모두 제안했어요. 담당자에게 문의해 주세요.', color: NonoTheme.red)
+        NonoInfo(icon: '🙏', title: 'scanner_match_request_exhausted_info_title'.tr(), body: 'scanner_match_request_exhausted_info_body'.tr(), color: NonoTheme.red)
       else ...[
         _Section(
-          title: '만날 장소',
+          title: 'scanner_match_request_section_place'.tr(),
           child: Wrap(spacing: 8, runSpacing: 8, children: [
             for (final p in MatchingStore.allPlaces)
               _SelectableChip(
                 label: p,
                 selected: selectedPlace == p,
                 enabled: g.availablePlaces.contains(p),
-                badge: g.availablePlaces.contains(p) ? '나눔이 지정' : null,
+                badge: g.availablePlaces.contains(p) ? 'scanner_match_request_place_badge'.tr() : null,
                 onTap: () => setState(() => selectedPlace = p),
               ),
           ]),
         ),
         const SizedBox(height: 18),
         _Section(
-          title: '가능한 요일',
+          title: 'scanner_match_request_section_day'.tr(),
           child: Wrap(spacing: 8, runSpacing: 8, children: [
             for (final d in MatchingStore.allDays)
               _SelectableChip(
@@ -120,9 +121,9 @@ class _MatchRequestPageState extends State<MatchRequestPage> {
         ),
         const SizedBox(height: 18),
         _Section(
-          title: '가능한 시간대',
+          title: 'scanner_match_request_section_time'.tr(),
           child: selectedDay == null
-              ? const Text('요일을 먼저 선택해 주세요', style: NonoTheme.muted)
+              ? Text('scanner_match_request_select_day_first'.tr(), style: NonoTheme.muted)
               : Wrap(spacing: 8, runSpacing: 8, children: [
                   for (final t in MatchingStore.allTimeSlots)
                     _SelectableChip(
@@ -134,7 +135,7 @@ class _MatchRequestPageState extends State<MatchRequestPage> {
                 ]),
         ),
         const SizedBox(height: 10),
-        const Text('회색으로 잠긴 항목은 나눔이가 등록하지 않았거나 이미 거절한 시간이라 고를 수 없어요.', style: NonoTheme.muted),
+        Text('scanner_match_request_locked_hint'.tr(), style: NonoTheme.muted),
         const SizedBox(height: 18),
         NonoCard(
           padding: const EdgeInsets.all(18),
@@ -144,8 +145,12 @@ class _MatchRequestPageState extends State<MatchRequestPage> {
             Expanded(
               child: Text(
                 [selectedPlace, selectedDay, selectedTimeSlot].every((e) => e == null)
-                    ? '장소 · 요일 · 시간을 선택해 주세요'
-                    : '${selectedPlace ?? '장소 미선택'} · ${selectedDay ?? '요일 미선택'} · ${selectedTimeSlot ?? '시간 미선택'}',
+                    ? 'scanner_match_request_summary_placeholder'.tr()
+                    : 'scanner_match_request_summary_selected'.tr(namedArgs: {
+                        'place': selectedPlace ?? 'scanner_match_request_place_unselected'.tr(),
+                        'day': selectedDay ?? 'scanner_match_request_day_unselected'.tr(),
+                        'time': selectedTimeSlot ?? 'scanner_match_request_time_unselected'.tr(),
+                      }),
                 style: NonoTheme.body,
               ),
             ),
@@ -153,9 +158,9 @@ class _MatchRequestPageState extends State<MatchRequestPage> {
         ),
         const SizedBox(height: 18),
         NonoButton(
-          text: submitting ? '신청 중...' : (widget.isResubmit ? '다른 시간으로 다시 신청하기' : '이 시간으로 신청하기'),
+          text: submitting ? 'scanner_match_request_submitting'.tr() : (widget.isResubmit ? 'scanner_match_request_submit_resubmit'.tr() : 'scanner_match_request_submit_new'.tr()),
           icon: Icons.send,
-          onTap: _canSubmit && !submitting ? _submit : () => nonoToast(context, '장소 · 요일 · 시간을 모두 선택해 주세요.'),
+          onTap: _canSubmit && !submitting ? _submit : () => nonoToast(context, 'scanner_match_request_toast_missing_selection'.tr()),
         ),
       ],
     ]);

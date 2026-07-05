@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../nono_theme.dart';
 
@@ -34,7 +35,7 @@ class NonoHeader extends StatelessWidget {
         child: Container(
           width: 62, height: 62, alignment: Alignment.center,
           decoration: BoxDecoration(color: NonoTheme.paper, borderRadius: BorderRadius.circular(16), border: Border.all(color: NonoTheme.red, width: 3), boxShadow: [NonoTheme.shadow]),
-          child: const Text('노노\n링크', textAlign: TextAlign.center, style: TextStyle(color: NonoTheme.red, fontWeight: FontWeight.w900, height: 1.05)),
+          child: Text('common_header_stamp_text'.tr(), textAlign: TextAlign.center, style: const TextStyle(color: NonoTheme.red, fontWeight: FontWeight.w900, height: 1.05)),
         ),
       ),
       const SizedBox(height: 16),

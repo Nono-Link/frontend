@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../common/nono_theme.dart';
 import '../common/widgets/nono_widgets.dart';
@@ -9,7 +10,13 @@ import 'senior_chat_page.dart';
 enum IssuanceStatus { pending, issued }
 
 const _demoCode = '483920';
-const _previewDemoCard = TalentCardData(code: _demoCode, name: '김영자', nickname: '나눔이', intro: '작은 화분을 오래 건강하게 키우는 법을 알려드려요.', tags: ['원예', '평일 오후', '주민센터']);
+TalentCardData _previewDemoCard() => TalentCardData(
+  code: _demoCode,
+  name: 'senior_talent_card_demo_name'.tr(),
+  nickname: 'senior_talent_card_demo_nickname'.tr(),
+  intro: 'senior_talent_card_demo_intro'.tr(),
+  tags: ['senior_talent_card_demo_tag_hobby'.tr(), 'senior_talent_card_demo_tag_time'.tr(), 'senior_talent_card_demo_tag_place'.tr()],
+);
 
 /// 발급 상태 조회를 UI에서 분리한 저장소. 실제 연동 시 GET /cards/status?code=... 호출로 교체.
 class TalentCardRepository {
@@ -67,7 +74,7 @@ class _MyTalentCardScreenState extends State<MyTalentCardScreen> {
         issuedCard = card;
       });
     } else if (manual) {
-      nonoToast(context, '아직 발급 대기중이에요');
+      nonoToast(context, 'senior_talent_card_toast_pending'.tr());
     }
   }
 
@@ -77,7 +84,7 @@ class _MyTalentCardScreenState extends State<MyTalentCardScreen> {
     setState(() {
       if (status == IssuanceStatus.pending) {
         status = IssuanceStatus.issued;
-        issuedCard ??= _previewDemoCard;
+        issuedCard ??= _previewDemoCard();
       } else {
         status = IssuanceStatus.pending;
       }
@@ -100,7 +107,7 @@ class _MyTalentCardScreenState extends State<MyTalentCardScreen> {
         heroTag: 'talent-card-preview-toggle',
         backgroundColor: NonoTheme.charcoalSoft,
         onPressed: _togglePreview,
-        tooltip: '미리보기 상태 전환 (임시)',
+        tooltip: 'senior_talent_card_preview_toggle_tooltip'.tr(),
         child: const Icon(Icons.swap_horiz, color: Colors.white),
       ),
       body: SafeArea(
@@ -150,10 +157,10 @@ class _Header extends StatelessWidget {
     ),
     const SizedBox(width: 12),
     Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      const Text('내 재능 명함', style: NonoTheme.h2),
+      Text('senior_talent_card_title'.tr(), style: NonoTheme.h2),
       const SizedBox(height: 2),
       Text(
-        issued ? '명함이 발급되었어요 🎉' : '담당자에게 코드를 보여주세요',
+        issued ? 'senior_talent_card_issued_subtitle'.tr() : 'senior_talent_card_pending_subtitle'.tr(),
         style: issued ? const TextStyle(color: _TalentColors.success, fontWeight: FontWeight.w800, fontSize: 14) : NonoTheme.muted,
       ),
     ])),
@@ -171,7 +178,7 @@ class _PendingContent extends StatelessWidget {
         padding: const EdgeInsets.all(22),
         decoration: BoxDecoration(color: _TalentColors.dark, borderRadius: BorderRadius.circular(20)),
         child: Column(children: [
-          const Text('구청 직원에게 보여줄 식별코드', textAlign: TextAlign.center, style: TextStyle(color: _TalentColors.mutedOnDark, fontWeight: FontWeight.w700, fontSize: 14)),
+          Text('senior_talent_card_code_label'.tr(), textAlign: TextAlign.center, style: const TextStyle(color: _TalentColors.mutedOnDark, fontWeight: FontWeight.w700, fontSize: 14)),
           const SizedBox(height: 18),
           Wrap(alignment: WrapAlignment.center, spacing: 8, runSpacing: 8, children: [
             for (final d in digits)
@@ -182,7 +189,7 @@ class _PendingContent extends StatelessWidget {
               ),
           ]),
           const SizedBox(height: 16),
-          const Text('이 코드로 담당자가 명함을 발급해요', textAlign: TextAlign.center, style: TextStyle(color: _TalentColors.mutedOnDark, fontWeight: FontWeight.w600, fontSize: 13)),
+          Text('senior_talent_card_code_hint'.tr(), textAlign: TextAlign.center, style: const TextStyle(color: _TalentColors.mutedOnDark, fontWeight: FontWeight.w600, fontSize: 13)),
         ]),
       ),
       const SizedBox(height: 16),
@@ -195,14 +202,14 @@ class _PendingContent extends StatelessWidget {
           child: Column(children: [
             const Icon(Icons.badge_outlined, size: 46, color: NonoTheme.charcoalSoft),
             const SizedBox(height: 14),
-            const Text('아직 발급된 명함이 없어요', style: TextStyle(fontSize: 19, fontWeight: FontWeight.w900, color: NonoTheme.charcoal)),
+            Text('senior_talent_card_empty_title'.tr(), style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w900, color: NonoTheme.charcoal)),
             const SizedBox(height: 8),
-            const Text('구청 직원이 코드를 확인하면\n명함이 만들어져요', textAlign: TextAlign.center, style: NonoTheme.muted),
+            Text('senior_talent_card_empty_body'.tr(), textAlign: TextAlign.center, style: NonoTheme.muted),
             const SizedBox(height: 16),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               decoration: BoxDecoration(color: NonoTheme.lineSoft, borderRadius: BorderRadius.circular(99)),
-              child: const Text('⏳ 발급 대기중', style: TextStyle(fontWeight: FontWeight.w800, color: NonoTheme.charcoalSoft)),
+              child: Text('senior_talent_card_pending_badge'.tr(), style: const TextStyle(fontWeight: FontWeight.w800, color: NonoTheme.charcoalSoft)),
             ),
           ]),
         ),
@@ -220,8 +227,8 @@ class _IssuedContent extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
       decoration: BoxDecoration(color: NonoTheme.lineSoft, borderRadius: BorderRadius.circular(99)),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Text('식별코드 ${data.code}', style: NonoTheme.muted),
-        const Text('사용 완료 ✓', style: TextStyle(color: _TalentColors.success, fontWeight: FontWeight.w800)),
+        Text('senior_talent_card_issued_code_label'.tr(namedArgs: {'code': data.code}), style: NonoTheme.muted),
+        Text('senior_talent_card_used_badge'.tr(), style: const TextStyle(color: _TalentColors.success, fontWeight: FontWeight.w800)),
       ]),
     ),
     const SizedBox(height: 16),
@@ -233,9 +240,9 @@ class _IssuedContent extends StatelessWidget {
       ),
       const SizedBox(width: 14),
       Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text('${data.name} 님', style: NonoTheme.h2),
+        Text('senior_talent_card_person_name_label'.tr(namedArgs: {'name': data.name}), style: NonoTheme.h2),
         const SizedBox(height: 2),
-        Text('별명 · ${data.nickname}', style: const TextStyle(color: _TalentColors.brown, fontWeight: FontWeight.w800, fontSize: 14)),
+        Text('senior_talent_card_nickname_line'.tr(namedArgs: {'nickname': data.nickname}), style: const TextStyle(color: _TalentColors.brown, fontWeight: FontWeight.w800, fontSize: 14)),
         const SizedBox(height: 10),
         Text(data.intro, style: NonoTheme.body),
         const SizedBox(height: 12),
@@ -256,16 +263,16 @@ class _PendingAction extends StatelessWidget {
   const _PendingAction({super.key, required this.onTap});
   final VoidCallback onTap;
   @override
-  Widget build(BuildContext context) => NonoButton(text: '내 명함 보러 가기', icon: Icons.badge, secondary: true, onTap: onTap);
+  Widget build(BuildContext context) => NonoButton(text: 'senior_view_card_button'.tr(), icon: Icons.badge, secondary: true, onTap: onTap);
 }
 
 class _IssuedActions extends StatelessWidget {
   const _IssuedActions({super.key});
   @override
   Widget build(BuildContext context) => Column(children: [
-    NonoButton(text: '새 매칭 요청 확인', icon: Icons.favorite, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SeniorMatchPage()))),
+    NonoButton(text: 'senior_talent_card_new_match_button'.tr(), icon: Icons.favorite, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SeniorMatchPage()))),
     const SizedBox(height: 12),
-    NonoButton(text: '채팅함 열기', icon: Icons.chat_bubble, secondary: true, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SeniorChatPage()))),
+    NonoButton(text: 'senior_talent_card_chat_button'.tr(), icon: Icons.chat_bubble, secondary: true, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SeniorChatPage()))),
   ]);
 }
 

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../common/nono_theme.dart';
 import '../common/widgets/nono_widgets.dart';
@@ -11,39 +12,39 @@ class StartPage extends StatelessWidget {
   Widget build(BuildContext context) => NonoPage(
     maxWidth: 640,
     children: [
-      const NonoHeader(
-        title: '노노링크',
-        subtitle: '종이 신청서에서 시작해 안전한 재능 배움이 매칭까지 연결합니다',
+      NonoHeader(
+        title: 'start_app_title'.tr(),
+        subtitle: 'start_app_subtitle'.tr(),
       ),
       const SizedBox(height: 22),
-      const NonoInfo(
+      NonoInfo(
         icon: '🩵',
-        title: '안전한 재능 연결',
-        body: '재능 나눔이는 손글씨 신청서로 재능을 등록하고, 앱에서는 명함 확인·매칭 수락·채팅만 이용합니다.',
+        title: 'start_info_title'.tr(),
+        body: 'start_info_body'.tr(),
         color: NonoTheme.coral,
       ),
       const SizedBox(height: 18),
       _RoleCard(
         emoji: '👵',
-        title: '재능 나눔이',
-        desc: '간단 인증, 내 명함 보기, 매칭 수락, 채팅',
-        chips: const ['간단 인증', '내 명함', '채팅'],
+        title: 'start_role_senior_title'.tr(),
+        desc: 'start_role_senior_desc'.tr(),
+        chips: ['start_role_senior_chip_auth'.tr(), 'start_role_senior_chip_card'.tr(), 'start_role_senior_chip_chat'.tr()],
         page: const SeniorLoginPage(),
       ),
       const SizedBox(height: 14),
       _RoleCard(
         emoji: '📱',
-        title: '재능 배움이 / 스캐너',
-        desc: '로그인, QR 스캔, 매칭 신청, 후기 작성',
-        chips: const ['신원 확인', 'QR 스캔', '후기'],
+        title: 'start_role_scanner_title'.tr(),
+        desc: 'start_role_scanner_desc'.tr(),
+        chips: ['start_role_scanner_chip_verify'.tr(), 'start_role_scanner_chip_qr'.tr(), 'start_role_scanner_chip_review'.tr()],
         page: const ScannerLoginPage(),
       ),
       const SizedBox(height: 14),
       _RoleCard(
         emoji: '🏛️',
-        title: '직원 / 봉사자',
-        desc: '신청서 OCR 등록, 검수, 명함 발급',
-        chips: const ['로그인', 'OCR 등록', '명함 발급'],
+        title: 'start_role_staff_title'.tr(),
+        desc: 'start_role_staff_desc'.tr(),
+        chips: ['start_role_staff_chip_login'.tr(), 'start_role_staff_chip_ocr'.tr(), 'start_role_staff_chip_issue'.tr()],
         page: const LoginExpertPage(),
       ),
     ],
@@ -85,7 +86,7 @@ class _RoleCard extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         NonoButton(
-          text: '$title 시작하기',
+          text: 'start_role_start_button'.tr(namedArgs: {'title': title}),
           icon: Icons.arrow_forward,
           onTap: () =>
               Navigator.push(context, MaterialPageRoute(builder: (_) => page)),
