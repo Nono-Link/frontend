@@ -25,7 +25,7 @@ class _LoginExpertPageState extends State<LoginExpertPage> {
   Widget _login(BuildContext context) => Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
     Text('login_expert_login_heading'.tr(), style: NonoTheme.h2), const SizedBox(height: 8),
     Text('login_expert_login_description'.tr(), style: NonoTheme.muted), const SizedBox(height: 18),
-    NonoInput(label: 'login_expert_id_label'.tr(), controller: id, hint: 'gangbuk_volunteer'),
+    NonoInput(label: 'login_expert_id_label'.tr(), controller: id, hint: 'login_expert_id_hint'.tr()),
     NonoInput(label: 'login_expert_password_label'.tr(), controller: pw, hint: 'login_expert_login_password_hint'.tr(), obscure: true),
     NonoButton(text: 'login_expert_login_submit_button'.tr(), icon: Icons.login, onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const StaffHomePage()))),
     const SizedBox(height: 14),

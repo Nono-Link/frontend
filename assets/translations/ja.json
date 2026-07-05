@@ -6,6 +6,7 @@
   "login_expert_login_heading": "担当者アカウントでログイン",
   "login_expert_login_description": "所属機関またはボランティアアカウントでアクセスします。",
   "login_expert_id_label": "ID",
+  "login_expert_id_hint": "tokyo_volunteer",
   "login_expert_password_label": "パスワード",
   "login_expert_login_password_hint": "パスワードを入力",
   "login_expert_login_submit_button": "業務ホームへ移動",
